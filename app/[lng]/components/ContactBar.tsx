@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import {useTranslation} from "@/app/i18n/client";
 
 const socialMedia = [
     {
@@ -55,7 +58,13 @@ const socialMedia = [
     },
 ]
 
-const ContactBar = () => {
+const ContactBar = ({
+                        language
+                    }: {
+    language: string
+}) => {
+    const {t} = useTranslation(language, 'global');
+
     return (
         <div className='
         group
@@ -82,17 +91,19 @@ const ContactBar = () => {
                 gap-px
                 '>
                     {
-                        socialMedia.map(item => (
-                            <div key={item.name} className='
+                        socialMedia.map((item, i) => (
+                            <div key={i} className='
                             px-4
-                            pt-4
+                            pt-3
                             hover:bg-neutral-200
                             flex
                             flex-row
                             gap-4
                             cursor-pointer
-                            hover:transition
-                            hover:scale-110
+                            transition
+                            hover:scale-105
+                            easy-in-out
+                            duration-300
                             '>
                                 <item.icon className="h-6 w-6" aria-hidden="true"/>
                                 {item.name}
@@ -102,7 +113,6 @@ const ContactBar = () => {
                 </div>
             </div>
             <div className='
-
             rotate-180
             md:text-xl
             bg-blue-500
@@ -112,14 +122,16 @@ const ContactBar = () => {
             cursor-pointer
             flex
             gap-4
+            hover:opacity-80
+            hover:bg-blue-900
+            transition
             '>
-                {/*<FiMail className='rotate-90 pt-2'/>*/}
                 <div className='
                 text-white
                 py-6
                 [writing-mode:vertical-rl]
                 '>
-                    Kontaktieren Sie uns
+                    {t('contact_bar.title')}
                 </div>
             </div>
         </div>

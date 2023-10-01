@@ -1,11 +1,12 @@
 'use client'
 
 import React, {useState} from 'react';
-import useApplicationModal from '@/app/hooks/useApplicationModal';
+import useApplicationModal from '@/app/[lng]/hooks/useApplicationModal';
 import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
-import Modal from "@/app/components/modals/Modal";
-import Input from "@/app/components/inputs/Input";
-import {sendEmail} from "@/app/utils/SendEmail";
+import Modal from "@/app/[lng]/components/modals/Modal";
+import Input from "@/app/[lng]/components/inputs/Input";
+import {sendEmail} from "@/app/[lng]/utils/SendEmail";
+import {useTranslation} from "@/app/i18n/client";
 
 export type FormData = {
     firstName: string,
@@ -15,8 +16,13 @@ export type FormData = {
     description: string
 }
 
-const ApplicationModal = () => {
+interface ApplicationModalProps {
+    language: string
+}
+
+const ApplicationModal = ({language}: ApplicationModalProps) => {
     const [isLoading, setIsLoading] = useState(false);
+    const { t} = useTranslation(language, 'global');
 
     const applicationModal = useApplicationModal();
     const {
@@ -38,7 +44,6 @@ const ApplicationModal = () => {
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
-        console.log('test-test');
         sendEmail(data);
         applicationModal.onClose();
         setIsLoading(false);
@@ -49,20 +54,20 @@ const ApplicationModal = () => {
         <div className='flex flex-col gap-4'>
             <Input
                 id='firstName'
-                label='First name'
+                label={t('modal.request.name')}
                 register={register}
                 errors={errors}
                 required
             />
             <Input
                 id='secondName'
-                label='Second name'
+                label={t('modal.request.surname')}
                 register={register}
                 errors={errors}
             />
             <Input
                 id='email'
-                label='Email'
+                label={t('modal.request.email')}
                 disabled={isLoading}
                 register={register}
                 errors={errors}
@@ -70,7 +75,7 @@ const ApplicationModal = () => {
             />
             <Input
                 id='phoneNumber'
-                label='Phone'
+                label={t('modal.request.phone')}
                 disabled={isLoading}
                 register={register}
                 errors={errors}
@@ -78,7 +83,7 @@ const ApplicationModal = () => {
             />
             <Input
                 id='description'
-                label='Description'
+                label={t('modal.request.description')}
                 register={register}
                 errors={errors}
                 required
@@ -89,8 +94,8 @@ const ApplicationModal = () => {
     return (
         <Modal
             disabled
-            title='Send to us the request'
-            actionLabel='Send'
+            title={t('modal.request.title')}
+            actionLabel={t('modal.request.button_text')}
             isOpen={applicationModal.isOpen}
             onClose={applicationModal.onClose}
             onSubmit={handleSubmit(onSubmit)}

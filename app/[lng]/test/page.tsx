@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import WelcomeBoard from "@/app/components/WelcomeBoard";
-import AboutCompanyBoard from "@/app/components/AboutCompanyBoard";
+import WelcomeBoard from "@/app/[lng]/components/WelcomeBoard";
+import AboutCompanyBoard from "@/app/[lng]/components/AboutCompanyBoard";
 
 const Test = () => {
 

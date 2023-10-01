@@ -1,18 +1,31 @@
-import React from 'react';
+'use client';
 
-const ServicesPage = () => {
+import React from 'react';
+import {fallbackLng, languages} from "@/app/i18n/settings";
+import {useTranslation} from "@/app/i18n/client";
+
+export async function generateStaticParams() {
+    return languages.map((lng) => ({lng}))
+}
+
+const ServicesPage = ({
+    params: {
+        lng
+    }
+}: {
+    params: {
+        lng: string
+    }
+}) => {
+    if (languages.indexOf(lng) < 0) lng = fallbackLng;
+
+    const {t} = useTranslation(lng, 'global');
+
     return (
         <div className='flex flex-col gap-20'>
             <div>
                 <p className='pt-32 font-bold text-justify'>
-                    Unsere Firma bietet professionelle Videoproduktionsdienstleistungen für Werbung an. Mit unserem
-                    erfahrenen
-                    Team von Videografen und Filmemachern erfassen wir kreative und ansprechende Videoinhalte, die Ihre
-                    Werbebotschaft effektiv vermitteln. Von der Konzeption bis zur Postproduktion bieten wir
-                    maßgeschneiderte
-                    Lösungen, um Ihre Marketingziele zu erreichen. Vertrauen Sie auf unsere Expertise, um Ihr
-                    Unternehmen in
-                    bewegten Bildern optimal zu präsentieren.
+                    {t('services.description')}
                 </p>
             </div>
             <div className='flex grid-cols-[20%_1fr] gap-4 md:gap-20 lg:gap-16'>

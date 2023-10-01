@@ -1,7 +1,15 @@
 import React from 'react';
 import Image from "next/image";
+import {useTranslation} from "@/app/i18n/client";
 
-const AboutCompanyBoard = () => {
+interface AboutCompanyBoardProps {
+    language: string
+}
+
+const AboutCompanyBoard: React.FC<AboutCompanyBoardProps> = ({
+                                                                 language
+                                                             }) => {
+    const { t } = useTranslation(language, 'global');
     return (
         <div className='
                     flex
@@ -13,14 +21,10 @@ const AboutCompanyBoard = () => {
                     '>
             <div className='basis-1/2 lg:text-3xl md:text-2xl text-xl  w-full'>
                 <div className='lg:text-6xl font-semibold mb-auto'>
-                    Wer wir sind?
+                    {t('pages.main.about_company.title')}
                 </div>
                 <div className='lg:pt-10 md:pt-8 pt-7'>
-                    Unsere kreativen Köpfe und modernste Technologie verschmelzen, um einzigartige
-                    Werbekampagnen zu entwickeln, die Ihre Zielgruppe ansprechen. Von der Ideenfindung über die
-                    Dreharbeiten bis zur Postproduktion bieten wir einen umfassenden Service, um
-                    sicherzustellen, dass Ihre Botschaft perfekt umgesetzt wird. Lassen Sie uns gemeinsam Ihre
-                    Marke in den Mittelpunkt stellen und in den Köpfen Ihrer Kunden verankern.
+                    {t('pages.main.about_company.text')}
                 </div>
             </div>
             <div className='basis-1/2 rounded relative w-full h-full overflow-hidden'>
