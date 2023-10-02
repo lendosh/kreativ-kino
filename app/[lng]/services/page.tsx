@@ -10,16 +10,16 @@ export async function generateStaticParams() {
 
 const ServicesPage = ({
     params: {
-        lng
+        language
     }
 }: {
     params: {
-        lng: string
+        language: string
     }
 }) => {
-    if (languages.indexOf(lng) < 0) lng = fallbackLng;
+    if (languages.indexOf(language) < 0) language = fallbackLng;
 
-    const {t} = useTranslation(lng, 'global');
+    const {t} = useTranslation(language, 'global');
 
     return (
         <div className='flex flex-col gap-20'>

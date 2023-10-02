@@ -11,19 +11,19 @@ export async function generateStaticParams() {
 
 const Page = ({
     params: {
-        lng
+        language
     }
 }: {
     params: {
-        lng: string
+        language: string
     }
 }) => {
-    if (languages.indexOf(lng) < 0) lng = fallbackLng;
+    if (languages.indexOf(language) < 0) language = fallbackLng;
 
     return (
         <div className='flex flex-col gap-24 overflow-hidden'>
-            <WelcomeBoard language={lng}/>
-            <AboutCompanyBoard language={lng}/>
+            <WelcomeBoard language={language}/>
+            <AboutCompanyBoard language={language}/>
         </div>
     )
 };
