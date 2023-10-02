@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Container from "@/app/[lng]/components/Container";
+import Container from "@/app/[language]/components/Container";
 import {useTranslation} from "@/app/i18n/client";
 import {fallbackLng, languages} from "@/app/i18n/settings";
 

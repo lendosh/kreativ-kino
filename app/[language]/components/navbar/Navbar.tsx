@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import Button from "@/app/[lng]/components/Button";
-import useApplicationModal from "@/app/[lng]/hooks/useApplicationModal";
+import Button from "@/app/[language]/components/Button";
+import useApplicationModal from "@/app/[language]/hooks/useApplicationModal";
 import {Disclosure} from '@headlessui/react';
 import {Bars3Icon, XMarkIcon} from '@heroicons/react/24/outline';
 import {useRouter} from "next/navigation";
 import {useTranslation} from "@/app/i18n/client";
-import LanguagePicker from "@/app/[lng]/components/LanguagePicker";
-import NavigationItem from "@/app/[lng]/components/navbar/NavigationItem";
+import LanguagePicker from "@/app/[language]/components/LanguagePicker";
+import NavigationItem from "@/app/[language]/components/navbar/NavigationItem";
 
 interface NavbarProps {
     language: string,

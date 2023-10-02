@@ -1,11 +1,11 @@
 'use client'
 
 import React, {useState} from 'react';
-import useApplicationModal from '@/app/[lng]/hooks/useApplicationModal';
+import useApplicationModal from '@/app/[language]/hooks/useApplicationModal';
 import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
-import Modal from "@/app/[lng]/components/modals/Modal";
-import Input from "@/app/[lng]/components/inputs/Input";
-import {sendEmail} from "@/app/[lng]/utils/SendEmail";
+import Modal from "@/app/[language]/components/modals/Modal";
+import Input from "@/app/[language]/components/inputs/Input";
+import {sendEmail} from "@/app/[language]/utils/SendEmail";
 import {useTranslation} from "@/app/i18n/client";
 
 export type FormData = {

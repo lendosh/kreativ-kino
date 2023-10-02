@@ -5,10 +5,10 @@ import React from "react";
 
 import {fallbackLng, languages} from "@/app/i18n/settings";
 import {dir} from "i18next";
-import Navbar from "@/app/[lng]/components/navbar/Navbar";
-import ApplicationModal from "@/app/[lng]/components/modals/ApplicationModal";
-import ContactBar from "@/app/[lng]/components/ContactBar";
-import Footer from "@/app/[lng]/components/Footer";
+import Navbar from "@/app/[language]/components/navbar/Navbar";
+import ApplicationModal from "@/app/[language]/components/modals/ApplicationModal";
+import ContactBar from "@/app/[language]/components/ContactBar";
+import Footer from "@/app/[language]/components/Footer";
 import Container from './components/Container';
 import {useTranslation} from "@/app/i18n";
 
@@ -26,26 +26,26 @@ export const metadata: Metadata = {
 export default async function RootLayout({
                                        children,
                                        params: {
-                                           lng,
+                                           language,
                                        }
                                    }: {
     children: React.ReactNode,
     params: {
-        lng: string,
+        language: string,
     },
 }) {
-    if (languages.indexOf(lng) < 0) lng = fallbackLng;
-    const { t } = await useTranslation(lng);
+    if (languages.indexOf(language) < 0) language = fallbackLng;
+    const { t } = await useTranslation(language);
 
     return (
-        <html lang={lng} dir={dir(lng)}>
+        <html lang={language} dir={dir(language)}>
         <body className={inter.className}>
-        <Navbar language={lng}/>
-        <ApplicationModal language={lng}/>
+        <Navbar language={language}/>
+        <ApplicationModal language={language}/>
         <Container>
             {children}
         </Container>
-        <ContactBar language={lng}/>
+        <ContactBar language={language}/>
         <Footer/>
         </body>
         </html>

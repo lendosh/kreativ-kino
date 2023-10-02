@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuItem from "@/app/[lng]/components/navbar/MenuItem";
+import MenuItem from "@/app/[language]/components/navbar/MenuItem";
 import {useRouter} from "next/navigation";
 
 const navigationItems = [

@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import WelcomeBoard from "@/app/[lng]/components/WelcomeBoard";
-import AboutCompanyBoard from "@/app/[lng]/components/AboutCompanyBoard";
+import WelcomeBoard from "@/app/[language]/components/WelcomeBoard";
+import AboutCompanyBoard from "@/app/[language]/components/AboutCompanyBoard";
 import {fallbackLng, languages} from "@/app/i18n/settings";
 
 export async function generateStaticParams() {
